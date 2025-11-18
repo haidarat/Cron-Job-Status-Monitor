@@ -2,7 +2,7 @@
   "name": "cron-monitor",
   "version": "1.0.0",
   "type": "module",
-  "main": "monitor.js",
+  "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
