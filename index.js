@@ -106,8 +106,8 @@ async function checkStatus() {
 }
 
 /** Express endpoint */
-app.get("/status", (req, res) => {
-  res.json(lastStatus);
+app.get("/", (req, res) => {
+  res.send("✅ Voice Guard Bot is running!");
 });
 
 /** Start Cron Loop */
@@ -117,3 +117,4 @@ setInterval(checkStatus, 3000);
 /** Start Express */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on :${PORT}`));
+
