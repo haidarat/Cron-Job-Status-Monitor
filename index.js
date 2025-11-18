@@ -62,7 +62,7 @@ function parseCronSVG(svg) {
 
   // inactive
   } else if (svg.includes("inactive")) {
-    statusText = "🔴 ออฟไลฟ์";
+    statusText = "🔴 ออฟไลน์";
     statusColor = 0xff0000;
 
   // HTTP error
@@ -130,6 +130,7 @@ setInterval(checkStatus, 3000);
 /** Start Express */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on :${PORT}`));
+
 
 
 
