@@ -52,14 +52,27 @@ async function editMessage(embed) {
 }
 
 function parseCronSVG(svg) {
-  let statusText = "⚪ UNKNOWN";
+  let statusText = "⚪ ไม่ทราบ&ตรวจสอบ...";
   let statusColor = 0xffffff;
 
+  // success
   if (svg.includes("success")) {
     statusText = "🟢 ออนไลน์";
     statusColor = 0x00ff00;
+
+  // inactive
   } else if (svg.includes("inactive")) {
-    statusText = "🔴 ออฟไลน์";
+    statusText = "🔴 ออฟไลฟ์";
+    statusColor = 0xff0000;
+
+  // HTTP error
+  } else if (svg.includes("HTTP error") || svg.includes("http error")) {
+    statusText = "🟠 ไม่มีการตอบกลับ...";
+    statusColor = 0xff8800;
+
+  // failed
+  } else if (svg.includes("failed") || svg.includes("error")) {
+    statusText = "🔴 ล้มเหลว";
     statusColor = 0xff0000;
   }
 
@@ -117,5 +130,6 @@ setInterval(checkStatus, 3000);
 /** Start Express */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on :${PORT}`));
+
 
 
